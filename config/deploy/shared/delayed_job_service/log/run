@@ -1,0 +1,2 @@
+#!/bin/sh
+exec setuidgid training multilog t ./main

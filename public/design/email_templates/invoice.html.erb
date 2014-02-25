@@ -1,0 +1,18 @@
+<h1>Invoice</h1>
+
+Thank you for choosing New York Interactive Media for your computer training needs. 
+<br/>
+<br/>
+
+		Amount charged:<br>
+        &nbsp <%= money(payment.amount) %>
+<% if payment.is_a? CreditCardPayment then %>      
+        Credit Card:<br>
+        &nbsp <%= payment.card.number %>
+        </br>
+        Billing Address:<br>
+        &nbsp <%= payment.card.name  %><br>
+        &nbsp <div style='display:inline-block;'><%= payment.card.address.multi_line.join('<br>') %></div>
+<% elsif payment.is_a? Cheque then %>
+        Check received from <%= payment.submitter.full_name %>
+<% end %>

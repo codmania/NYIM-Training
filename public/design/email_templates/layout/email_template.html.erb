@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>New York Interactive Media</title>
+		<style type="text/css">
+@charset "UTF-8";
+/* CSS Document */
+
+/* Master Styles */
+
+* { padding: 0; margin: 0; }
+
+body {
+font-family: Myriad, "Myriad Pro", Arial, Helvetica, sans-serif;
+font-size: 12px;
+background-color: #041e38;
+background-image: url(pagebg.png);
+background-repeat: repeat-x;
+background-position: left top;
+color: 4d4d4f;
+line-height: 18px;
+text-align: justify;
+margin: 0px;
+}
+#header {
+background-color: #001D3B;
+background-image: url(<%= attachments['shine.png'].url %>);
+background-repeat: repeat-x;
+font-size: 12px;
+color: #FFF;
+}
+
+#specialtxt   p {
+font-size: 12px;
+font-weight: bold;
+text-align: left;
+line-height: 14px;
+margin-bottom: 6px;
+padding-left: 6px;
+}
+#specialtxt {
+background-image: url(<%= attachments['ribbon.png'].url %>);
+background-repeat: no-repeat;
+background-position: -7px top;
+width: 180px;
+padding: 30px 10px 10px;
+}
+
+#clients_part {
+width: 163px;
+}
+
+#container {
+width: 550px;
+margin-right: auto;
+margin-left: auto;
+background-color: #FFF;
+border: thin solid #999;
+margin-top: 3px;
+}
+#greyrepeat {
+background-image: url(<%= attachments['footerbg.png'].url %>);
+
+}
+#lightgreyrepeat {
+background-image: url(<%= attachments['footerbg_light.png'].url %>);
+
+}
+
+.rounded-corners {
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-khtml-border-radius: 10px;
+border-radius: 10px;
+border: thin solid #CCC;
+margin: 10px;
+padding: 7px;
+}
+
+.shadow {
+-moz-box-shadow: 5px 5px 20px #000;
+-webkit-box-shadow: 5px 5px 20px #000;
+box-shadow: 5px 5px 20px #000;
+} .fltright {
+float: right;
+}
+
+}
+#coffee {
+background-image: url(<%= attachments['chocolate_coffee_water_100.jpg'].url %>);
+background-repeat: no-repeat;
+height: 74px;
+width: 100px;
+float: right;
+
+}
+.fltleft {
+float: left;
+}
+.headings , .headings a:link, .headings a:visited{
+font-size: 14px;
+color: #A9373E;
+font-weight: bold;
+text-decoration: none;
+}
+#excelpu {
+margin-left: 105px;
+}
+.listchange, li, ul, #listy {
+list-style-type: circle;
+padding-left: 20px;
+}
+img a, a, img {
+text-decoration: none;
+border-top-style: none;
+border-right-style: none;
+border-bottom-style: none;
+border-left-style: none;
+}
+.insert_fied_code {
+color: #F00;
+}
+		</style>
+	</head>
+	<body>
+		<div class="shadow" id="container">
+			<div id="header">
+				<a href="http://newyorkinteractivemedia.com">
+				<img src="<%= attachments["nyimlogo.png"].url %>"
+				width="80" height="37" alt="NYIM Logo" />
+				</a>
+				<img src="<%= attachments["spacer.png"].url %>" width="15" height="5" alt="spacer" />
+				&quot;The Most Practical  Training&quot;
+				<img src="<%= attachments["spacer.png"].url %>" width="30" height="5" alt="spacer" />
+				1 Union Square West , NYC - 718.795.3608
+				<img src="<%= attachments["spacer.png"].url %>" width="10" height="7" alt="spacer" />
+				<a href="mailto:faye@newyorkinteractivemedia.com">
+				<img src="<%= attachments["mail.png"].url %>" width="50" height="37" alt="Email Us" />
+				</a>
+			</div>
+			<div class="rounded-corners" id="greyrepeat">
+				<%= yield %>
+			</div>
+			<div class="rounded-corners" id="lightgreyrepeat">
+				<p>
+					Best Regards,
+					<br />
+					Faye Kourouklis
+					<br />
+					Head Client Manager
+					<br />
+					NYIM Training, LLC
+					<br />
+					&quot;The most practical training in New York&quot;
+					<br />
+					<br />
+					718-795-3608
+					<br />
+					<a href="mailto:faye@newyorkinteractivemedia.com">faye@newyorkinteractivemedia.com</a>
+					<br />
+					<a href="http://www.newyorkinteractivemedia.com">www.newyorkinteractivemedia.com</a>
+				</p>
+				<p>
+					<a href="http://www.facebook.com/pages/New-York-Interactive-Media/145030058885512">
+					<img src="<%= attachments["facebook.gif"].url %>" width="20" height="20" alt="facebook" />
+					</a>
+					<a href="http://twitter.com/#!/NYIMTraining">
+					<img src="<%= attachments["twitter.gif"].url %>" width="20" height="20" alt="Twitter" />
+					</a>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

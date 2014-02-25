@@ -1,0 +1,29 @@
+.display_certificate {
+        /* letter size */
+        position:absolute;
+        top:0;
+        width:800px;
+        height:600px;
+        text-align: center;
+        /* background-color:yellow; */
+        /* background: url('/images/certificate.jpg') no-repeat; */
+}
+
+.display_certificate_student {
+        color:black;
+        padding-top:280px;
+        font-size:16pt;
+}
+
+.display_certificate_course {
+        color:black;
+        font-size:16pt;
+        padding-top:70px;
+}
+
+.display_certificate_date {
+        color:black;
+        font-size:16pt;
+        padding-top:30px;
+}
+

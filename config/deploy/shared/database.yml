@@ -1,0 +1,32 @@
+development:
+  adapter: mysql2
+  database: nyim_development
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+  username: rails
+  password: "rails"
+  socket: /var/run/mysqld/mysqld.sock
+  collation: utf8_general_ci
+  
+test:
+  adapter: mysql2
+  database: nyim_test
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+  username: rails
+  password: "rails"
+  socket: /var/run/mysqld/mysqld.sock
+  collation: utf8_general_ci
+
+production:
+  adapter: mysql2
+  database: nyim_production
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+  username: rails
+  password: "rails"
+  socket: /var/run/mysqld/mysqld.sock
+  collation: utf8_general_ci

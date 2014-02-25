@@ -1,0 +1,573 @@
+@charset "UTF-8";
+body  {
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+	font-family: 'MyriadProRegular', sans-serif;
+	font-size: 1em;
+	background-color: #041e38;
+	background-image: url(images/pagebg.png);
+	background-repeat: repeat-x;
+	background-position: left top;
+	line-height: 2em;
+}
+h1  {
+	color: #9d1e2c;
+	font-family: 'MyriadProBold', sans-serif;
+	text-transform: uppercase;
+	font-size: 16px;
+	line-height: 18px;
+	font-weight: normal;
+}
+h2 {
+	font-size: 14px;
+	line-height: 24px;
+	text-transform: uppercase;
+	color: #041e38;
+	font-family: 'MyriadProBold', sans-serif;
+	font-weight: normal;
+}
+h3 {
+	font-size: 12px;
+	line-height: 14px;
+	text-transform: uppercase;
+	margin-top: 6px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-family: 'MyriadProBold', sans-serif;
+	font-weight: normal;
+}
+h4 {
+	color: #9d1e2c;
+	padding: 0px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	font-family: 'MyriadProBold', sans-serif;
+	font-weight: normal;
+}
+a {
+	color: #041e38;
+	text-decoration: none;
+}
+#container  {
+	width: 955px;
+	margin: 0 auto;
+	text-align: left;
+	background-color: #FFFFFF;
+	background-image: url(images/contentbg.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+} 
+
+#header  {
+	padding: 0;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+} 
+#topbar {
+	height: 37px;
+	background-color: #041e39;
+	width: 955px;
+	text-align: right;
+}
+#logo {
+	background-image: url(images/nyimlogo.png);
+	background-repeat: no-repeat;
+	background-position: 4px top;
+	margin: 0px;
+	padding: 0px;
+	height: 37px;
+	width: 90px;
+	float: left;
+}
+#address {
+	padding: 0px;
+	float: left;
+	width: 84%;
+	color: #FFF;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	height: 37px;
+	line-height: 37px;
+	font-size: 14px;
+	font-family: 'MyriadProRegular', sans-serif;
+}
+#mail {
+	margin: 0px;
+	padding: 0px;
+	height: 37px;
+	width: 50px;
+	float: right;
+}
+#menu1 {
+	height: 12px;
+	margin-top: 10px;
+	font-family: 'MyriadProBoldCondensed', sans-serif;
+	color: #FFF;
+	font-size: 14px;
+	margin-bottom: 30px;
+}
+#classbutton {
+	background-color: #9d1e2c;
+	float: left;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 6px;
+	padding-left: 6px;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left -4px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+#classes {
+	background-color: #333;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left -4px;
+	float: left;
+	width: 755px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding: 4px;
+}
+#menu1 ul{
+	text-align: center;
+	list-style-type: none;
+	padding: 0px;
+	overflow: hidden;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+#menu1 ul li {
+	float: left;
+	padding-right: 3px;
+	padding-left: 3px;
+}
+#menu1 ul li a {
+	color: #FFF;
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	padding-top: 0px;
+	padding-right: 4px;
+	padding-bottom: 0px;
+	padding-left: 4px;
+}
+#menu1 ul li a:hover {
+	color: #041e38;
+	background-color: #FFF;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left -4px;
+}
+#signup {
+	background-color: #041e39;
+	float: right;
+	padding-right: 6px;
+	padding-left: 6px;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left -4px;
+	margin-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+#signup a {
+	color: #FFF;
+	text-decoration: none;
+}
+#menu2 {
+	height: 12px;
+	margin-top: 10px;
+	font-family: 'MyriadProBoldCondensed', sans-serif;
+	color: #FFF;
+	font-size: 14px;
+	margin-bottom: 10px;
+	clear: left;
+}
+#infobutton {
+	background-color: #9d1e2c;
+	float: left;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 6px;
+	padding-left: 6px;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left -4px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+#info {
+	background-color: #e5e5e5;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left -4px;
+	float: left;
+	width: 755px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding: 4px;
+}
+#menu2 #info > ul {
+	text-align: center;
+	list-style-type: none;
+	padding: 0px;
+	overflow: hidden;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+#menu2 ul > li {
+	float: left;
+	padding-right: 3px;
+	padding-left: 3px;
+	text-align: center;
+}
+#menu2 ul li a {
+	color: #666;
+	text-decoration: none;
+	
+	display: block;
+	padding-top: 0px;
+	padding-right: 4px;
+	padding-bottom: 0px;
+	padding-left: 4px;
+}
+#menu2 ul li a:hover {
+	color: #041e38;
+	background-color: #b4bdc6;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left -4px;
+}
+#login {
+	background-color: #041e39;
+	float: right;
+	padding-right: 6px;
+	padding-left: 6px;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left -4px;
+	margin-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+#login a {
+	color: #FFF;
+	text-decoration: none;
+}
+#main  {
+	float: left; /* since this element is floated, a width must be given */
+	/* width: 349px; /* the background color will be displayed for the length of the content in the column, but no further */
+    width: 680px;
+	padding: 20px 10px 15px 20px; /* padding keeps the content of the div away from the edges */
+}
+#left  {
+	float: left; /* since this element is floated, a width must be given */
+	/* width: 349px; /* the background color will be displayed for the length of the content in the column, but no further */
+    width: 349px;
+	padding: 20px 10px 15px 20px; /* padding keeps the content of the div away from the edges */
+}
+#left ul li {
+	list-style-type: none;
+	background-color: #b4bdc6;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left -6px;
+	color: #041e38;
+	padding-top: 0px;
+	padding-right: 3px;
+	padding-bottom: 0px;
+	padding-left: 12px;
+	margin-bottom: 8px;
+	margin-right: 10px;
+}
+#center  {
+	/* width: 332px; */
+	
+	width: 332px;
+	margin-top: 0;
+	margin-right: 200px;
+	margin-bottom: 0;
+	margin-left: 379px;
+	padding-top: 20px;
+	padding-right: 10px;
+	padding-bottom: 0;
+	padding-left: 10px;
+} 
+#programs p {
+	font-size: 10px;
+	color: #666;
+	margin: 0px;
+}
+#programs a {
+	font-size: 14px;
+	font-weight: normal;
+	font-family: 'MyriadProBold', sans-serif;
+}
+.picspace {
+	margin-right: 10px;
+	vertical-align: middle;
+}
+#right  {
+	float: right; /* since this element is floated, a width must be given */
+	width: 226px; /* padding keeps the content of the div away from the edges */
+	font-size: 10px;
+	line-height: 12px;
+	margin-right: 0px;
+	padding: 0px;
+	margin-top: 20px;
+}
+#right p {
+	color: #666;
+	font-family: "Myriad Pro", Myriad, Verdana, Geneva, sans-serif;
+	margin: 0px;
+}
+#location {
+	width: 195px;
+	background-image: url(images/1unsq.png);
+	background-repeat: no-repeat;
+	background-position: -2px -100px;
+	height: 195px;
+	margin-top: 30px;
+	margin-bottom: -20px;
+}
+#badge {
+	background-image: url(images/badge.png);
+	background-repeat: no-repeat;
+	height: 75px;
+	width: 71px;
+	margin: 0px;
+	padding: 0px;
+	z-index: 10;
+	float: right;
+}
+#sale {
+	width: 165px;
+	background-image: url(images/footerbg.png);
+	background-repeat: repeat;
+	background-position: left top;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+}
+#sale h2 a{
+	font-size: 14px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #9d1e2c;
+	line-height: 1em;
+	font-family: 'MyriadProBold', sans-serif;
+}
+#sale p {
+	font-size: 14px;
+	font-weight: bold;
+	color: #666;
+	line-height: 18px;
+}
+#footer  {
+	background-image: url(images/footerbg.png);
+	background-repeat: repeat;
+	background-position: left top;
+	color: #666;
+	margin: 0px;
+	line-height: 1em;
+	padding-top: 6px;
+	padding-bottom: 6px;
+} 
+#footer p  {
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+	padding: 0px; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+	text-align: justify;
+	font-size: 10px;
+	line-height: 14px;
+}
+#footer a {
+	color: #666;
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+	padding: 0px; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+	text-align: justify;
+	font-size: 10px;
+	line-height: 14px;
+	text-decoration: none;
+}
+#testimonials {
+	width: 349px;
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 20px;
+	border-right-width: thin;
+	border-right-style: solid;
+	border-right-color: #999;
+	float: left;
+}
+#footer #clientlist {
+	width: 312px;
+	margin-left: 389px;
+	border-right-width: thin;
+	border-right-style: solid;
+	border-right-color: #999;
+	padding-right: 10px;
+}
+#smallprint {
+	width: 210px;
+	padding-right: 20px;
+	float: right;
+}
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+.shine {
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+/* CSS3 Effects */
+
+.rounded-corners {
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px;
+}
+.shadow {
+	-moz-box-shadow: 5px 5px 5px #666;
+	-webkit-box-shadow: 5px 5px 5px #666;
+	box-shadow: 5px 5px 5px #666;
+}
+.rounded-corners-shadow {
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 2px 2px 5px #666;
+	-webkit-box-shadow: 2px 2px 5px #666;
+	box-shadow: 2px 2px 5px #666;
+}
+.rounded-bottom-corners {
+	border-top-left-radius: 0px;
+	-moz-border-radius-topleft: 0px;
+	border-top-right-radius: 0px;
+	-moz-border-radius-topright: 0px;
+	border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	-khtml-border-top-left-radius: 0px;
+	-khtml-border-top-right-radius: 0px;
+	-khtml-border-bottom-right-radius: 6px;
+	-khtml-border-bottom-left-radius: 6px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
+.rounded-bottom-corners-shadow {
+	border-top-left-radius: 0px;
+	-moz-border-radius-topleft: 0px;
+	border-top-right-radius: 0px;
+	-moz-border-radius-topright: 0px;
+	border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	-khtml-border-top-left-radius: 0px;
+	-khtml-border-top-right-radius: 0px;
+	-khtml-border-bottom-right-radius: 6px;
+	-khtml-border-bottom-left-radius: 6px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	-moz-box-shadow: 2px 2px 5px #666;
+	-webkit-box-shadow: 2px 2px 5px #666;
+	box-shadow: 2px 2px 5px #666;
+}
+.shadow-shine {
+	-moz-box-shadow: 0px 2px 5px #666;
+	-webkit-box-shadow: 0px 2px 5px #666;
+	box-shadow: 0px 2px 5px #666;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+.rounded-corners-shadow-shine {
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 2px 2px 5px #666;
+	-webkit-box-shadow: 2px 2px 5px #666;
+	box-shadow: 2px 2px 5px #666;
+	background-image: url(images/shine.png);
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+/* Embedded Fonts */
+@font-face {
+	font-family: 'MyriadProBold';
+	src: url('fonts/myriadpro-bold-webfont.eot');
+	src: local('☺'), url('fonts/myriadpro-bold-webfont.woff') format('woff'), url('fonts/myriadpro-bold-webfont.ttf') format('truetype'), url('fonts/myriadpro-bold-webfont.svg#webfontsa10ghGQ') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MyriadProBoldCondensed';
+	src: url('fonts/myriadpro-boldcond-webfont.eot');
+	src: local('☺'), url('fonts/myriadpro-boldcond-webfont.woff') format('woff'), url('fonts/myriadpro-boldcond-webfont.ttf') format('truetype'), url('fonts/myriadpro-boldcond-webfont.svg#webfontbGfrauH5') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MyriadProRegular';
+	src: url('fonts/myriadpro-regular-webfont.eot');
+	src: local('☺'), url('fonts/myriadpro-regular-webfont.woff') format('woff'), url('fonts/myriadpro-regular-webfont.ttf') format('truetype'), url('fonts/myriadpro-regular-webfont.svg#webfontHRO1WXsX') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MyriadProItalic';
+	src: url('fonts/myriadpro-it-webfont.eot');
+	src: local('☺'), url('fonts/myriadpro-it-webfont.woff') format('woff'), url('fonts/myriadpro-it-webfont.ttf') format('truetype'), url('fonts/myriadpro-it-webfont.svg#webfont9drwFAi4') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# http://serverfault.com/questions/397031/run-script-as-another-user-from-a-root-script-with-no-tty-stdin
+# http://www.mobalean.com/blog/2010/08/16/delayed_job-and-other-daemons-in-a-production-environment
+# apt-get install daemontools-run
+# http://cr.yp.to/daemontools/faq/create.html#runlog
+# /etc/sudoers:
+# V.T: root can su to execute cmds as other users from a script w/o tty stdin
+#  Defaults:[training] !requiretty
+
+exec 2>&1
+exec su - training -c 'cd $HOME/nyim/current; RAILS_ENV=production exec bundle exec ruby ./script/delayed_job run'

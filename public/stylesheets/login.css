@@ -1,0 +1,158 @@
+#dimmer {
+	background-color: rgb(0, 0, 0);
+	opacity: 0.7;
+	/* Safari, Opera */
+	-moz-opacity:0.70;
+	/* FireFox */
+	filter: alpha(opacity=70);
+	/* IE */
+	z-index: 2000;
+	height: 100%;
+	width: 100%;
+	background-repeat:repeat;
+	position:fixed;
+	top: 0px;
+	left: 0px;
+	font-size: 100%;
+	line-height: 1.4;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding: 0;
+	color: #000;
+}
+/* ~~ this fixed width container surrounds all other elements ~~ */
+#loginbox {
+	z-index: 2001;
+	width: 569px;
+	/* the auto value on the sides, coupled with the width, centers the layout */
+	height: 375px;
+	background-color: #FFF;
+	background-image: url(/images/contentbg.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	/* ROUND CORNERS */
+	-moz-border-radius: 6px;
+	/* Firefox */
+	-webkit-border-radius: 6px;
+	/* Safari, Chrome */
+	border-radius: 6px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	/* END ROUND CORNERS */
+	position: absolute;
+	left: 50%;
+	margin-top: -187px;
+	margin-left: -284px;
+	top: 50%;
+	/* DROP SHADOW */
+	-moz-box-shadow: 2px 2px 6px #000;
+	-webkit-box-shadow: 2px 2px 6px #000;
+	box-shadow: 2px 2px 6px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	/* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000'); */
+	/* END DROP SHADOW */
+}
+#loginbox #form {
+	width: 320px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 100px;
+}
+#loginbox p {
+	color: #9d1e2c;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 16px;
+}
+#loginbox h1 {
+	color: #9d1e2c;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+/* ~~ This is the layout information. ~~
+
+ 1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+ */
+.screen {
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+}
+#loginbox #form label {
+	width: 120px;
+	float: left;
+}
+#loginbox input.loginbutton {
+	color: #FFF;
+	text-transform: uppercase;
+	background-color: #041e38;
+	height: 37px;
+	float: right;
+	background-image: url(/images/shine.png);
+	background-repeat: repeat-x;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	/* ROUND CORNERS */
+	-moz-border-radius: 6px;
+	/* Firefox */
+	-webkit-border-radius: 6px;
+	/* Safari, Chrome */
+	border-radius: 6px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	/* END ROUND CORNERS */
+	/* DROP SHADOW */
+	-moz-box-shadow: 2px 2px 4px #000;
+	-webkit-box-shadow: 2px 2px 4px #000;
+	box-shadow: 2px 2px 4px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	/* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000'); */
+	padding-right: 10px;
+	padding-left: 10px;
+	/* END DROP SHADOW */
+	margin-top: 10px;
+}
+#key {
+	position:absolute;
+	width:18px;
+	height:38px;
+	z-index:1;
+	left: 20px;
+	top: 318px;
+}
+#close {
+	position:absolute;
+	width:37px;
+	height:30px;
+	z-index:1;
+	left: 552px;
+	top: -18px;
+	background-color: #9d1e2c;
+	background-image: url(/images/shine.png);
+	background-repeat: repeat-x;
+	font-weight: bold;
+	color: #FFF;
+	text-align: center;
+	/* ROUND CORNERS */
+	-moz-border-radius: 6px;
+	/* Firefox */
+	-webkit-border-radius: 6px;
+	/* Safari, Chrome */
+	border-radius: 6px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	/* END ROUND CORNERS */
+	padding-top: 7px;
+	/* DROP SHADOW */
+	-moz-box-shadow: 2px 2px 6px #000;
+	-webkit-box-shadow: 2px 2px 6px #000;
+	box-shadow: 2px 2px 6px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	/* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000'); */
+	/* END DROP SHADOW */
+}

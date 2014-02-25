@@ -1,0 +1,15 @@
+class CreditCard < ActiveMerchant::Billing::CreditCard
+  # linkpoint compatible creditcard class with
+  # initializer for aggregate inclusion in active record
+  def supported_cardtypes
+    ActiveMerchant::Billing::LinkpointGateway.supported_cardtypes
+  end
+
+  def initialize(*attr)
+    init={}
+    [:type, :number, :verification_value, :month, :year, :first_name, :last_name ].each { |k| init[k]=attr.shift }
+    super(init)
+  end
+end
+
+
