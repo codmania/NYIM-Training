@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :discount, :invoiceable, :mandatory, :created_by, :active,
-    :first_name, :last_name, :parent_id, :company_id, :company_name
+    :first_name, :last_name, :position, :parent_id, :company_id, :company_name
 
   ROLES = [:student, :admin, :teacher]
 

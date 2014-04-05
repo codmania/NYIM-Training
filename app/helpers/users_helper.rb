@@ -40,14 +40,14 @@ module UsersHelper
         w.li do
           w.label 'Company'
           w.select_tag 'company',
-                       options_for_select([['Existing Company', ''],
-                                           ['New Company', 'true']],
-                                          new_company_selected||''),
-                       'data-select-target' => 'true',
-                       'data-select-show'   => '#new_form',
-                       'data-select-clear'  => "##{form_id}_company_name",
-                       'data-select-hide'   => "##{form_id}_company_name_input",
-                       'data-select-write'  => "##{form_id}_company_attributes_mandatory"
+            options_for_select([['Existing Company', ''],
+                                ['New Company', 'true']],
+                               new_company_selected||''),
+            'data-select-target' => 'true',
+            'data-select-show'   => '#new_form',
+            'data-select-clear'  => "##{form_id}_company_name",
+            'data-select-hide'   => "##{form_id}_company_name_input",
+            'data-select-write'  => "##{form_id}_company_attributes_mandatory"
           w.text ' '
           w.link_to "Edit #{form.object.company.name}", edit_company_path(form.object.company_id) if form.object.company_id && form.object.company
         end
@@ -62,12 +62,12 @@ module UsersHelper
       end
       form.object.company_name ||= form.object.company.name if form.object.company
       form.input :company_name,
-                 :as           => :autocomplete,
-                 :label        => 'Company',
-                 :hint         => 'Start typing to get autocompletion',
-                 :required     => false,
-                 :url          => autocomplete_companies_path,
-                 :wrapper_html => { :style => ('display:none;' if new_company_selected) }
+        :as           => :autocomplete,
+        :label        => 'Company',
+        :hint         => 'Start typing to get autocompletion',
+        :required     => false,
+        :url          => autocomplete_companies_path,
+        :wrapper_html => { :style => ('display:none;' if new_company_selected) }
     end
   end
 
@@ -95,6 +95,7 @@ module UsersHelper
     w.errors(form.object)
     form.inputs do
       account_fields(form, w)
+      form.input :position, :hint => "position trainers appear at on trainers' bio page" if admin?
       form.input :photo, :required => true, :hint => 'image will be automatically resized to 155x155 format'
       form.object.build_profile unless form.object.profile
       form.semantic_fields_for :profile do |profile|

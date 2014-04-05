@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140405141248) do
+ActiveRecord::Schema.define(:version => 20140405143431) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id",   :null => false
@@ -336,6 +336,7 @@ ActiveRecord::Schema.define(:version => 20140405141248) do
     t.string   "admin_email"
     t.string   "phone"
     t.string   "fax"
+    t.string   "forum_link"
     t.string   "upload_dir"
     t.string   "site_name"
     t.string   "stylesheet"
@@ -363,7 +364,6 @@ ActiveRecord::Schema.define(:version => 20140405141248) do
     t.string   "os"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "forum_link"
     t.string   "seo_tag"
   end
 
@@ -414,6 +414,7 @@ ActiveRecord::Schema.define(:version => 20140405141248) do
     t.boolean  "active",                                :default => true
     t.string   "slug"
     t.datetime "reset_password_sent_at"
+    t.integer  "position"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
