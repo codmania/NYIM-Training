@@ -1,0 +1,1 @@
+Nyim::Application.config.secret_token = 'd256191bec99811bfa18020991741d0794e45efdbcf37451913fb35c6fb5ebbf1317565b750f7941403ef2a5eeee2f44ffd352443f587ea086a2572bdd27dcde'
