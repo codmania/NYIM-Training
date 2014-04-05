@@ -70,10 +70,10 @@ class Asset < ActiveRecord::Base
         File.open(asset.path, 'w') :
         File.new(File.join('/tmp', tempfilename), File::CREAT|File::TRUNC|File::RDWR, 0644)
       file.write content
-      #logger.debug [content, asset_updated_at_changed?, file, asset, asset.path].inspect
-      self.asset = file unless asset && asset.path
-      self.asset_updated_at = Time.now
       file.close
+      logger.debug [content, asset_updated_at_changed?, asset_updated_at_change, file, asset, asset.path].inspect
+      self.asset = File.new(File.join('/tmp', tempfilename)) unless asset && asset.path
+      self.asset_updated_at = Time.now
     end
   end
 
