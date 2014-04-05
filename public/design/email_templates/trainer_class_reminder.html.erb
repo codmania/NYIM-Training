@@ -1,0 +1,15 @@
+<p>
+  Hi
+  <%= user.first_name %>,
+  <br />
+  Your class '<%= course.name %>
+  has the following signups:
+  <ol>
+    <% course.attendants.each do |student| %>
+      <li><%= student.full_name %>
+        <%= student.email %>
+        <%= phone = student.phone_number; phone ? r.phone.to_s : 'no phone' %>
+      </li>
+    <% end %>
+  </ol>
+</p>

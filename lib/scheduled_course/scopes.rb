@@ -13,6 +13,11 @@ module ScheduledCourse::Scopes
         future.where :course_id.eq => course.course_id, :id.not_eq => course.id
       }
 
+      scope :tomorrow, lambda {
+        s = Time.now.midnight + 1.day
+        e = s + 1.day
+        where(:starts_at.lt => e, :starts_at.gt => s)
+      }
 
       scope :starts_no_later_than, lambda { |date|
         where(:starts_at.lt => date)
@@ -59,9 +64,9 @@ module ScheduledCourse::Scopes
       }
 
       scope :active, (lambda {
-        joins(:course, :course_group).where(:course_group => { :active.eq => true },
-                                            :course       => { :active.eq => true },
-                                            :active.eq    => true)
+                        joins(:course, :course_group).where(:course_group => { :active.eq => true },
+                                                            :course       => { :active.eq => true },
+                                                            :active.eq    => true)
       })
 
       search_methods :calendar_from_dt, :calendar_to_dt #,  :splat_param => true, :type => [:integer]

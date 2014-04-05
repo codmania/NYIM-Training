@@ -8,4 +8,5 @@ LAUNCH_CMD=curl -k -X
 # instead of runner, use local call
 14 03 * * * $LAUNCH_CMD POST -d 'task=purge_stale_signups' $JOB_LAUNCH_URL >> $JOBS_LOG
 14 04 * * * $LAUNCH_CMD POST -d 'task=send_course_reminders' $JOB_LAUNCH_URL >> $JOBS_LOG
+44 03 * * * $LAUNCH_CMD POST -d 'task=send_trainer_class_reminders' $JOB_LAUNCH_URL >> $JOBS_LOG
 24 05 * * * $LAUNCH_CMD POST -d 'task=send_feedback_reminders' $JOB_LAUNCH_URL >> $JOBS_LOG

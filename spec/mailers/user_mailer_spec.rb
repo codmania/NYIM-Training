@@ -42,7 +42,6 @@ describe Mailers::UserMailer do
         check_email email, :subject => subject, :to => [@to]
         email.deliver
         ActionMailer::Base.deliveries.should_not be_empty
-
       end
     end
   end

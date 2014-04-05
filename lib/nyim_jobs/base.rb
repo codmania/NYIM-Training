@@ -9,7 +9,7 @@ class NyimJobs::Base #< Struct.new(*ATTRS)
 
   include Process::Hooks
 
-  TASKS = [:purge_stale_signups, :send_course_reminders, :send_feedback_reminders, :delayed_user_mailer]
+  TASKS = [:purge_stale_signups, :send_course_reminders, :send_feedback_reminders, :delayed_user_mailer, :trainer_class_reminers]
   TASKS_CLASSES = {}
   TASKS.each { |task| TASKS_CLASSES[task] = "NyimJobs::#{task.to_s.camelize}" }
 
@@ -25,11 +25,11 @@ class NyimJobs::Base #< Struct.new(*ATTRS)
       Rails.logger.info "[JOBS] #{klass} #{text}"
       if force
         Rails.logger.info "[JOBS] #{klass} launched"
-      klass.constantize.new(options).launch if force
+        klass.constantize.new(options).launch if force
       end
-    true
+      true
     else
-    false
+      false
     end
   end
 
@@ -50,8 +50,8 @@ class NyimJobs::Base #< Struct.new(*ATTRS)
     self.options = init.reverse_merge(options || {})
     self.tag ||= self.class.name.underscore.split('/')[1].humanize
     self.job_class ||= 'Job'
-  #self.description = "hi"#self.class.description
-  #self.interval ||= 60
+    #self.description = "hi"#self.class.description
+    #self.interval ||= 60
   end
 
   def launch(time = nil)
@@ -63,10 +63,10 @@ class NyimJobs::Base #< Struct.new(*ATTRS)
     super(job,exc)
   end
 
-# this hook implements a cron-like function
-#def success
-# super
-#  launch(:run_at => interval.minutes.since(run_at || Time.now) if interval
-#end
+  # this hook implements a cron-like function
+  #def success
+  # super
+  #  launch(:run_at => interval.minutes.since(run_at || Time.now) if interval
+  #end
 
 end

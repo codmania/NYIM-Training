@@ -4,9 +4,9 @@ class Mailers::UserMailer < ActionMailer::Base
 
   ADMIN_EMAIL = proc { }
   default :sender      => proc { Site.site(:admin_email) },
-          :reply_to    => proc { Site.site(:admin_email) },
-          :bcc         => proc { "#{Site.site(:admin_email)}, nyim.devel@gmail.com" },
-          :parts_order => ['text/html', 'text/plain']
+    :reply_to    => proc { Site.site(:admin_email) },
+    :bcc         => proc { "#{Site.site(:admin_email)}, nyim.devel@gmail.com" },
+    :parts_order => ['text/html', 'text/plain']
   #default_url_options[:host] ||= "training-nyc.com"
 
   def layout_assets
@@ -19,26 +19,25 @@ class Mailers::UserMailer < ActionMailer::Base
       file = File.new(Rails.root.join('public/design/email_templates/layout', image))
       Asset.create!(:name => :template, :format => 'img', :index => i, :asset => file)
     end
-    #text_layout = File.open(Rails.root.join('design/email_templates/text_template.txt',image)).read
-    #Asset.create!(:name => :template, :format => :text, :asset => file)
     html_layout = File.new(Rails.root.join('public/design/email_templates/layout/email_template.html.erb'))
     Asset.create!(:name => :template, :format => 'html', :asset => html_layout)
     @assets = Asset.assets :template
   end
 
   MAILS = [
-      :course_ends,
-      :activation_request,
-      :activation,
-      :waiting_list_confirmation,
-      :seat_available,
-      :certificate,
-      :invoice,
-      :course_reminder,
-      :course_confirmation,
-      :course_cancelation,
-      :course_cancelation_admin,
-      :certificates_to_be_mailed,
+    :course_ends,
+    :activation_request,
+    :activation,
+    :waiting_list_confirmation,
+    :seat_available,
+    :certificate,
+    :invoice,
+    :course_reminder,
+    :course_confirmation,
+    :course_cancelation,
+    :course_cancelation_admin,
+    :certificates_to_be_mailed,
+    :trainer_class_reminder
   ]
 
   PART_FORMATS       = { :html => :inline, :text => :inline }
@@ -69,7 +68,7 @@ class Mailers::UserMailer < ActionMailer::Base
   def asset(name, options={ }, assigns={ })
 
     assets            = template_assets(name)
-    options[:subject] = self.class.subject(name, assigns)
+    options[:subject] ||= self.class.subject(name, assigns)
     options[:to]      ||= (assigns[:user] || assigns[:student]).ifnil?('viktor.tron@gmail.com', &:email)
 
     # :img1 => file, :img2 => file
@@ -82,7 +81,7 @@ class Mailers::UserMailer < ActionMailer::Base
     @html_email_template = layout_assets[:html].ifnil? { |x| x.asset.path }
     @text_email_template = layout_assets[:text].ifnil? { |x| x.asset.path }
 
-    # calls hook to add arbitrarya attachment
+    # calls hook to add arbitrary attachment
     create_attachments(name, assigns)
 
     #Rails.logger.warn assets.inspect
@@ -110,30 +109,32 @@ class Mailers::UserMailer < ActionMailer::Base
 
   def self.subject(name, assigns)
     case name.to_sym
-      when :course_ends then
-        "[NYIM] Your class '#{assigns[:signup].name}' has ended, please give us feedback and get your certificate"
-      when :activation_request then
-        '[NYIM] Please activate your new account'
-      when :activation then
-        '[NYIM] Your account has been activated!'
-      when :waiting_list_confirmation then
-        "[NYIM] You have been added to the waiting list for our course #{assigns[:signup].name}"
-      when :seat_available then
-        "[NYIM] Free seats on our course #{assigns[:signup].name}"
-      when :certificate then
-        "[NYIM] Your certificate for is ready"
-      when :invoice then
-        "[NYIM] Invoice"
-      when :course_reminder then
-        "[NYIM] Your class '#{assigns[:signup].name}' is starting on #{assigns[:signup].starts_at.to_date.to_s}"
-      when :course_confirmation then
-        "[NYIM] You signed up to our class '#{assigns[:signup].name}'"
-      when :course_cancelation then
-        "[NYIM] You canceled your class '#{assigns[:signup].name}'"
-      when :course_cancelation_admin then
-        "[NYIM] refund notification: #{assigns[:student].full_name} canceled class '#{assigns[:signup].name}'"
-      when :certificates_to_be_mailed then
-        "[NYIM] Certificates to be mailed"
+    when :course_ends then
+      "[NYIM] Your class '#{assigns[:signup].name}' has ended, please give us feedback and get your certificate"
+    when :activation_request then
+      '[NYIM] Please activate your new account'
+    when :activation then
+      '[NYIM] Your account has been activated!'
+    when :waiting_list_confirmation then
+      "[NYIM] You have been added to the waiting list for our course #{assigns[:signup].name}"
+    when :seat_available then
+      "[NYIM] Free seats on our course #{assigns[:signup].name}"
+    when :certificate then
+      "[NYIM] Your certificate for is ready"
+    when :invoice then
+      "[NYIM] Invoice"
+    when :course_reminder then
+      "[NYIM] Your class '#{assigns[:signup].name}' is starting on #{assigns[:signup].starts_at.to_date.to_s}"
+    when :course_confirmation then
+      "[NYIM] You signed up to our class '#{assigns[:signup].name}'"
+    when :course_cancelation then
+      "[NYIM] You canceled your class '#{assigns[:signup].name}'"
+    when :course_cancelation_admin then
+      "[NYIM] refund notification: #{assigns[:student].full_name} canceled class '#{assigns[:signup].name}'"
+    when :certificates_to_be_mailed then
+      "[NYIM] Certificates to be mailed"
+    when :trainer_class_reminder then
+      "[NYIM] #{assigns[:course].full_name}"
     end
   end
 
