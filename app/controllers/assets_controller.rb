@@ -61,7 +61,11 @@ class AssetsController < ApplicationController
   end
 
   document_title :asset do
-    "#{resource} - #{site(:site_name)} - #{site(:seo_tag)}"
+    if resource == 'main'
+      "#{site(:site_name)} - #{site(:seo_tag)}"
+    else
+      "#{resource} - #{site(:site_name)} - #{site(:seo_tag)}"
+    end
   end
 
 end
