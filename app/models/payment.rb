@@ -29,15 +29,15 @@ class Payment < ActiveRecord::Base
 
   def credit_cards
     c = if student && store
-          student.cards(store)
-        else
-          []
-        end
+      student.cards(store)
+    else
+      []
+    end
     #logger.debug "student = #{student} && store = #{store.inspect} \n ccs = #{c.inspect}"
     c
   end
 
-  TYPES = [:credit_card_payment, :gift, :cheque, :invoice, :retake]
+  TYPES = [:credit_card_payment, :gift, :cheque, :invoice, :retake, :coursehorse]
   TYPE_NAMES = TYPES.map(&:to_s)
   TYPE_CLASS_NAMES = TYPE_NAMES.map(&:classify)
 
@@ -48,10 +48,10 @@ class Payment < ActiveRecord::Base
   # order id is generated at every creation and used for transaction code by the controller
   # this order id is important and used by the gateway to identify payments for later refund etc.
   default :amount => proc { |r| r.set_amount },
-          :order_id => proc { |r| r.class.generate_order_id },
-          :attempts => 0,
-          :payment_errors => proc { Hash.new },
-          :public_payment_errors => proc { Hash.new }
+    :order_id => proc { |r| r.class.generate_order_id },
+    :attempts => 0,
+    :payment_errors => proc { Hash.new },
+    :public_payment_errors => proc { Hash.new }
 
   #before_validation :set_type
 
@@ -87,7 +87,7 @@ class Payment < ActiveRecord::Base
 
   def authorized_submitter?
     student.is_a?(Student) && submitter.is_a?(User) &&
-        (submitter.admin? || student== submitter || student.created_by == submitter)
+      (submitter.admin? || student== submitter || student.created_by == submitter)
   end
 
   def payer
@@ -99,13 +99,13 @@ class Payment < ActiveRecord::Base
   has_many :purchases, :class_name => 'Signup', :dependent => :delete_all
   # a failed payment has failed purchases
   has_and_belongs_to_many :failed_purchases, :class_name => 'Signup',
-                          :join_table => 'failed_payments_purchases'
+    :join_table => 'failed_payments_purchases'
 
   # the amount is calculated based on the shopping cart, set via signups_controller
   composed_of :amount, :class_name => 'Money',
-              :mapping => [%w(amount cents)],
-              :allow_nil => true,
-              :converter => proc { |c| c.blank? ? Struct.new(:cents).new : c.is_a?(Money) ? c : Money.new(c.to_f * 100) }
+    :mapping => [%w(amount cents)],
+    :allow_nil => true,
+    :converter => proc { |c| c.blank? ? Struct.new(:cents).new : c.is_a?(Money) ? c : Money.new(c.to_f * 100) }
 
   validates_each :transaction_code, :on => :create do |record, attr, value|
     record.errors.add(attr, "invalid, session changed (%s vs %s)" % [value, record.order_id]) unless value == record.order_id || value == 'test'
@@ -212,4 +212,3 @@ class Payment < ActiveRecord::Base
   end
 
 end
-
