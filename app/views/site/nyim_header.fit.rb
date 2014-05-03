@@ -8,7 +8,7 @@ class Views::Site::NyimHeader < Erector::Widget
         div :id => 'logo' do
         end
         div :id => 'address' do
-          text '1 Union Square West, Suite 903, NY, NY • Information and Booking: (718) 795-3608'
+          text '1 Union Square West, Suite 903, NY, NY • Information and Booking: 212.658.1918'
         end
         div :id => 'mail' do
           a :href => 'mailto:faye@newyorkinteractivemedia.com?Subject=WebMail' do

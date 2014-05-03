@@ -9,14 +9,14 @@ class Views::Site::NyimHeader < Erector::Widget
         end
         div :class => 'fltlft', :id => 'logo' do
           a :href => root_path do
-            img :src => '/images/nyimlogo.png', :width => '80', :height => '37', :alt => 'New York Interactive Media logo'
+            img :src => '/images/nyimlogo.png', :width => '39', :height => '37', :alt => 'Training-NYC logo'
           end
         end
         div :id => "fade_base" do
           a :id => "fade_link"
         end
         p do
-          text '1 Union Square West, Suite 805, NY, NY • Information and Booking: (718) 795-3608'
+          text '1 Union Square West, Suite 805, NY, NY • Information and Booking: 212.658.1918'
         end
       end
 
