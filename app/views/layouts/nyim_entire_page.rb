@@ -34,7 +34,7 @@ class Views::Layouts::NyimEntirePage < Erector::Widget
                 text '1 Union Square West, Suite 903, NY, NY • Information and Booking: 212.658.1918'
               end
               div :id => 'mail' do
-                a :href => 'mailto:faye@newyorkinteractivemedia.com?Subject=WebMail' do
+                a :href => 'mailto:mailto:faye@training-nyc.com?Subject=WebMail' do
                   img :src => '/stylesheets/images/mail.png', :width => '50', :height => '37', :alt => 'Email'
                 end
               end
