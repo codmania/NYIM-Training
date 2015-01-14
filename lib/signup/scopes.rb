@@ -51,6 +51,10 @@ module Signup::Scopes
         joins(:scheduled_course).where :scheduled_course => { :ends_at.lt => Time.now }
       }
 
+      scope :inthelastday, lambda { |*a|
+        joins(:scheduled_course).where :scheduled_course => { :ends_at.lt => Time.now,  :ends_at.gt => 1.day.ago }
+      }
+
       scope :upcoming, lambda { |*a|
         joins(:scheduled_course).where :scheduled_course => { :starts_at.gt => Time.now }
       }
