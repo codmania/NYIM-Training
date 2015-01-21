@@ -9,7 +9,7 @@ class NyimJobs::Base #< Struct.new(*ATTRS)
 
   include Process::Hooks
 
-  TASKS = [:purge_stale_signups, :send_course_reminders, :send_feedback_reminders, :delayed_user_mailer, :send_trainer_class_reminers]
+  TASKS = [:purge_stale_signups, :send_course_reminders, :send_feedback_reminders, :delayed_user_mailer, :send_trainer_class_reminders]
   TASKS_CLASSES = {}
   TASKS.each { |task| TASKS_CLASSES[task] = "NyimJobs::#{task.to_s.camelize}" }
 
