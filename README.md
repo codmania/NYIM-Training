@@ -5,7 +5,8 @@ New York Institutional Metrics Training (NYIM Training)
 Training-NYC.com Version 10
 
 ####To restart server
-First have your public key installed by Viktor viktor.tron@gmail.com
+First have your public key installed by Viktor viktor.tron@gmail.com. It may be possible to add via github
+
 
 ssh root@207.210.201.229
 ps auxwww | grep delayed_job | grep -v grep

@@ -16,10 +16,10 @@ class Views::Signups::New < Application::Widgets::New
       form.input :course, :collection => Course.active, :include_blank => 'Choose Class',
                  :input_html          => { 'data-observe-url' => select_course_url('%(selected)', :format => :js) }
       form.input :scheduled_course, :collection => scheduled_courses_dropdown(signup.course, :tag => false), :include_blank => false,
-                 :input_html                    => { 'data-observe-url' => select_scheduled_course_url('%(selected)', :format => :js) }, :hint => 'Hint: e.g. (3/10) shows 3 free seats left to book for a class of 10 students'
+                 :input_html                    => { 'data-observe-url' => select_scheduled_course_url('%(selected)', :format => :js) }, :hint => 'Hint: e.g. (3/10) shows 3 free seats of a 10 student class'
       form.input :os, :as => :select, :collection => os_dropdown(signup.course, :tag => false), :include_blank => 'Choose operating system'
       form.input :allow_double_booking, :as => :boolean, :label => 'Confirm you want to rebook this course' unless signup.double_booking.nil? || signup.double_booking.empty?
-      # admin and those alread managing students can search by autocomplete
+      # admin and those already managing students can search by autocomplete
       can_select_students  = admin? || user_signed_in? && !current_user.students.empty?
       # new student for is by default if not logged in or admin or if new student was previously selected
       new_student_selected = !user_signed_in? || !params[:student].blank?
