@@ -64,7 +64,7 @@ module UsersHelper
       form.input :company_name,
         :as           => :autocomplete,
         :label        => 'Company',
-        :hint         => 'Start typing to get autocompletion',
+        :hint         => 'Start typing to get autocompletion. A Company is required by Section 5001(2)k of the Education Law. ',
         :required     => false,
         :url          => autocomplete_companies_path,
         :wrapper_html => { :style => ('display:none;' if new_company_selected) }
