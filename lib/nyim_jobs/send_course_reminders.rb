@@ -4,7 +4,8 @@ class NyimJobs::SendCourseReminders < NyimJobs::Base
   def perform
     if Site.site(:notify_before_course_starts)
       in_batches ScheduledCourse.tomorrow do |course|
-        course.attendants.each do |student|
+        next if course.nil?
+        course.attendants.reject(&:blank?).each do |student|
           Mailers::UserMailer.course_reminder({},{ :student => student, :course => course }) #if student.course_reminder_required?
         end
       end
