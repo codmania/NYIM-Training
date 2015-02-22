@@ -1,5 +1,6 @@
 class Views::Signups::Create < Views::Signups::New
-
+  include Application::Widgets::Extensions
+  
   def widget_content
     unless resource.new_record?
       if resource.waiting?
@@ -8,12 +9,13 @@ class Views::Signups::Create < Views::Signups::New
         end
       else
         rawtext asset 'signup'
+        controller.redirect_to shopping_cart_path(current_user.slug)
       end
       self.record = Signup.new(:course => resource.course, :scheduled_course => resource.scheduled_course, :os => resource.os)
-
+      
+      
     else
       @submitted = true
-      #  resource.errors.add(:student_email,resource.errors[:student])
     end
 
     super

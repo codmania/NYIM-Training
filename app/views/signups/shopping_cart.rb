@@ -23,9 +23,15 @@ class Views::Signups::ShoppingCart < Application::Widgets::Index
         div :id => :shopping_cart_total, :class => 'rounded-corners-shadow total' do
           p "Total"
           p :class => 'price' do text money(payment.amount) end
+          
+        end
+        div :class => 'rounded-corners-shadow checkout_text' do
+          text "You have added the \"#{resource.last.name}\" to your Cart. You may Checkout Now or add more classes below"
         end
       end
-      widget Views::Payments::New, :record => payment
+      widget Views::Payments::New, :record => payment      
+      widget Views::Signups::New, :record=>Signup.new(:created_by_id=>current_user.id)
+
     end
   end
 

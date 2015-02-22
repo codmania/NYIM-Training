@@ -1,7 +1,6 @@
 class SignupsController < ApplicationController
   # this is very very dangerous surely
   #include ActiveModel::StateMachine::StatedController
-
   layout :layout
 
   def layout
@@ -33,13 +32,21 @@ class SignupsController < ApplicationController
                       :forget => :update,
                       :list => :index
 
+  js :shopping_cart do |page|
+    page.replace 'sidebar', render_to_string(:widget => Views::Site::UserPanel)
+  end
+
   js :create, :update, :reschedule, :reschedule_update, :feedback_update do |page|
     view_context.update_sidebar(page)
+
     page.replace 'header', render_to_string(:widget => Views::Site::NyimHeader) if @newly_signed_in
+
   end
 
   js :add_to_shopping_cart, :save_for_later, :forget, :only => true do |page|
     view_context.update_sidebar(page)
+
+
   end
 
   collection_scope do |scope|

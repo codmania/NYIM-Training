@@ -3,8 +3,11 @@ class Views::Signups::New < Application::Widgets::New
     h1 'Sign Up'
     super
     div :id => :selected_class, :class => 'rounded-corners-shadow' do
-      course = resource.scheduled_course
-      widget(Views::ScheduledCourses::Select, :course => course) if course
+      if resource.respond_to? :scheduled_course
+        course = resource.scheduled_course
+        widget(Views::ScheduledCourses::Select, :course => course) if course
+      end
+
     end
   end
 
@@ -48,6 +51,8 @@ class Views::Signups::New < Application::Widgets::New
         signup.build_student(:mandatory => new_student_selected)
         signup.student.phone_numbers.build
         submitter = student? ? current_user : signup.submitter
+
+
         signup.student.company ||= submitter.company if submitter
       end
       div :id => 'new_student_form', :style => ('display:none;' unless new_student_selected) do
