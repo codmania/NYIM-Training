@@ -3,6 +3,13 @@
 
 function liveHook() {
 
+    $("#scroll > a").click(function(e) {
+        $('html, body').animate({
+            scrollTop: $("#scrollToSignup").offset().top
+        }, 1000);
+        return false;
+    });
+
     //http://trentrichardson.com/examples/timepicker/
     $('input[data-datepicker]').livequery(function () {
         //$(this).datepicker({

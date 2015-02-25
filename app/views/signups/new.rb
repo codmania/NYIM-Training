@@ -7,7 +7,6 @@ class Views::Signups::New < Application::Widgets::New
         course = resource.scheduled_course
         widget(Views::ScheduledCourses::Select, :course => course) if course
       end
-
     end
   end
 
