@@ -3,7 +3,9 @@
 
 function liveHook() {
 
-    $("#scroll > a").click(function(e) {
+    $("#scroll > span").click(function(e) {
+
+        
         $('html, body').animate({
             scrollTop: $("#scrollToSignup").offset().top
         }, 1000);

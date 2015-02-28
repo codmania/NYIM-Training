@@ -2,7 +2,7 @@ class Views::Signups::New < Application::Widgets::New
   def widget_content
     h1 'Sign Up'
     super
-    div :id => :selected_class, :class => 'rounded-corners-shadow' do
+    div :id => :selected_class do
       if resource.respond_to? :scheduled_course
         course = resource.scheduled_course
         widget(Views::ScheduledCourses::Select, :course => course) if course
