@@ -4,6 +4,12 @@
 New York Institutional Metrics Training (NYIM Training)
 Training-NYC.com Version 10
 
+##### Development Use
+mysql.server start
+rake db:migrate
+you may need to delete "System" file in Public folder
+
+
 ####To restart server
 First have your public key installed by Viktor viktor.tron@gmail.com. It may be possible to add via github
 
