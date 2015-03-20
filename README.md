@@ -13,8 +13,17 @@ you may need to delete "System" file in Public folder
 ####To restart server
 First have your public key installed by Viktor viktor.tron@gmail.com. It may be possible to add via github
 
-
 ssh root@207.210.201.229
+/etc/init/delayed_job.conf
+ln -s /lib/init/upstart-job /etc/init.d/delayed_job
+
+--needed?
+ls -l /etc/init/delayed_job.conf
+cat /etc/init/delayed_job.conf
+
+
+
+This is antiquated. I think. 
 ps auxwww | grep delayed_job | grep -v grep
 killall svscan
 /etc/init.d/nyim_service
@@ -70,3 +79,21 @@ grep 'CourseReminders' /home/training/nyim/current/log/delayed_job.log
 May need this line to restart
 initctl start delayed_job
 
+
+######
+/etc/httpd/conf/includes/*
+Direct modifications to the Apache configuration file ma
+y be lost upon subsequent regeneration of the configuration file. To have modifications retained, all
+modifications must be checked into the configuration system by running:
+/usr/local/cpanel/bin/apache_conf_distiller --update
+To see if your changes will be conserved, regenerate the
+Apache configuration file by running:              
+/usr/local/cpanel/bin/build_apache_conf and check the configuration file for your alterations. If your changes have been ignored, then they will    
+need to be added directly to their respective template files.
+
+To customize this VirtualHost use an include file at the following location
+Include "/usr/local/apache/conf/userdata/std/2/training/training-nyc.com/*.conf"
+
+/home/training/www/training-nyc.com/shared/httpd.conf
+ 
+ 
