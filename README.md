@@ -96,4 +96,14 @@ Include "/usr/local/apache/conf/userdata/std/2/training/training-nyc.com/*.conf"
 
 /home/training/www/training-nyc.com/shared/httpd.conf
  
- 
+
+This is how they fixed it when permssions were messed up.
+
+849  03/20/2015 20:06:34: chmod +x /home/training/.rvm/gems/ruby-1.9.3-p448\@nyim/gems/passenger-4.0.5/agents/PassengerWatchdog
+855  03/20/2015 20:08:14: chmod +x /home/training/.rvm/gems/ruby-1.9.3-p448@nyim/gems/passenger-4.0.5/agents/PassengerHelperAgent
+856  03/20/2015 20:08:25: chmod +x /home/training/.rvm/gems/ruby-1.9.3-p448@nyim/gems/passenger-4.0.5/agents/PassengerLoggingAgent
+857  03/20/2015 20:08:34: chmod +x /home/training/.rvm/gems/ruby-1.9.3-p448@nyim/gems/passenger-4.0.5/agents/SpawnPreparer
+860  03/20/2015 20:08:59: chmod +x /home/training/.rvm/wrappers/ruby-1.9.3-p448@nyim/ruby
+868  03/20/2015 20:10:09: service httpd restart
+
+The permissions for passenger were incorrect for those folders. We corrected them and the site is now working w/ the wildcard SSL. Can you confirm on your end as well?
