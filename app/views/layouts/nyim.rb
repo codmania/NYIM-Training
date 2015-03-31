@@ -32,6 +32,7 @@ class Views::Layouts::Nyim < Erector::Widget
           'jquery.remotipart',
           'jquery.easyListSplitter',
           'autocomplete-rails',
+          '//cdn.ckeditor.com/4.4.7/basic/ckeditor.js',
           'application',
         'ajax_history')
         rawtext csrf_meta_tags unless response.cache_control[:public]

@@ -24,11 +24,16 @@ module AssetsHelper
             form.input :content, :as => :text, :input_html => { :size => "80x80" }, :hint => hint
           end
         end
+
       rescue ArgumentError => exc
         w.text "Malformed template: #{exc}"
       end
     end
     formtastic_button(form)
+    w.rawtext "<script type=\"text/javascript\"> if('#asset_content'){
+                CKEDITOR.replace('asset_content', {});
+                $('label.label').remove();
+              } </script>"
   end
 
   def asset(resource, fallback = nil)
