@@ -1,38 +1,9 @@
 require 'spec_helper'
 
-
-
 describe SignupsController do
   def setup
     @course = Factory.create :excel_class_in_5_days
     @student = Factory.create :joe_student
-  end
-
-  def student_attributes(student = nil)
-    a = { "mandatory" => student && "true", "phone_numbers_attributes"=>{ 0 => { "number" => student ? student.phone_numbers.first.number : "" } } }
-    ["first_name", "last_name", "email", "password", "password_confirmation", "company_name" ].each do |attr|
-      a[attr] = student ? student.send(attr) : ""
-    end
-    a
-  end
-
-  def sign_up(params={})
-    course = params.delete(:scheduled_course) || @course
-    student = params.delete(:student) || @student
-    student_email = student && !student.new_record? ?  student.full_name_with_email : ""
-    params = { "commit"=>"Create Signup", "signup"=>{"course_id"=>course.course_id, "scheduled_course_id"=>course.id, "os"=>"mac",
-        "student_email"=>student_email, "student_attributes"=>student_attributes(student && student.new_record? ? student : nil) }.merge(params) }
-    post :create, params
-    check_redirect
-  end
-
-  def check_signup(signup, options)
-    signup.should_not be_nil
-    signup.new_record?.should be_false
-    defaults = { :created_by => @current_user, :scheduled_course => @course, :course => @course.course }
-    options.reverse_merge(defaults).each do |key,value|
-      signup.send(key).should == value
-    end
   end
 
   describe "sign up" do
@@ -175,4 +146,38 @@ describe SignupsController do
 
   end
 
+  private
+
+  def find_email(student)
+    student && !student.new_record? ? student.full_name_with_email : ""
+  end
+
+  STUDENT_REQUIRED_ATTR = ["first_name", "last_name", "email", "password", "password_confirmation", "company_name" ]
+
+  def student_attributes(student = nil)
+    a = { "mandatory" => student && "true", "phone_numbers_attributes"=>{ 0 => { "number" => student ? student.phone_numbers.first.number : "" } } }
+    STUDENT_REQUIRED_ATTR.each do |attr|
+      a[attr] = student ? student.send(attr) : ''
+    end
+    a
+  end
+
+  def sign_up(params={})
+    course = params.delete(:scheduled_course) || @course
+    student = params.delete(:student) || @student
+    params = { "commit"=>"Create Signup", "signup"=>{"course_id"=>course.course_id, "scheduled_course_id"=>course.id, "os"=>"mac",
+                                                     "student_email"=>find_email(student), "student_attributes"=>student_attributes(student && student.new_record? ? student : nil) }.merge(params) }
+    post :create, params
+    check_redirect
+  end
+
+  def check_signup(signup, options)
+    signup.should_not be_nil
+    signup.new_record?.should be_false
+    defaults = { :created_by => @current_user, :scheduled_course => @course, :course => @course.course }
+    options.reverse_merge(defaults).each do |key,value|
+      signup.send(key).should == value
+    end
+  end
 end
+
