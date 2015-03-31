@@ -22,9 +22,8 @@ describe SignupsController do
     student_email = student && !student.new_record? ?  student.full_name_with_email : ""
     params = { "commit"=>"Create Signup", "signup"=>{"course_id"=>course.course_id, "scheduled_course_id"=>course.id, "os"=>"mac",
         "student_email"=>student_email, "student_attributes"=>student_attributes(student && student.new_record? ? student : nil) }.merge(params) }
-    #puts params.inspect
     post :create, params
-    check_success
+    check_redirect
   end
 
   def check_signup(signup, options)
