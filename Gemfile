@@ -18,7 +18,9 @@ group :development do
   # gem 'ruby-debug'
   #gem 'ruby-debug19'
   gem 'debugger'
-  gem 'pry'
+  gem 'jazz_hands'
+  gem 'letter_opener'
+
   # use vagrant
   #gem 'erubis', "~> 2.7.0"
   #gem 'vagrant', ">=0.8.0"
@@ -76,4 +78,4 @@ gem 'date_validator', :git => 'git://github.com/codegram/date_validator.git'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 
-gem 'friendly_id', "~> 4.0.0.beta14"
+gem 'friendly_id', "~> 4.0.0"
