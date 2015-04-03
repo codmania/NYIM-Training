@@ -5,8 +5,25 @@ New York Institutional Metrics Training (NYIM Training)
 Training-NYC.com Version 10
 
 ##### Development Use
+As an plug-in alternative to MySql you can use MariaDb:
+- much more performant
+- doesn't require any changes
+- proper security defaults
+
+If mysql2 gem errors out during installation, provide this:
+gem install mysql2 --with-mysql-dir=/PATH/TO/MARIADB/OR/MYSQL
+
+Resseting root password for OSX, in case you forgot your root password:
+https://www.rosehosting.com/blog/how-to-reset-your-mariadb-root-password/\
+
+
 mysql.server start
-rake db:migrate
+
+CREATE USER rails WITH PASSWORD "rails";
+CREATE DATABASE nyim3_development;
+
+Don't use rake db:migrate, use rake db:schema:load to load up schema.
+
 you may need to delete "System" file in Public folder
 
 
