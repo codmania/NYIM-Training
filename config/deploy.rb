@@ -20,7 +20,7 @@ require 'capistrano/ext/multistage'
 
 # server details
 default_run_options[:pty] = true
-# ssh_options[:forward_agent] = true
+ssh_options[:forward_agent] = true
 
 # main details
 set :application, "nyim"
