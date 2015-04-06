@@ -107,3 +107,13 @@ This is how they fixed it when permssions were messed up.
 868  03/20/2015 20:10:09: service httpd restart
 
 The permissions for passenger were incorrect for those folders. We corrected them and the site is now working w/ the wildcard SSL. Can you confirm on your end as well?
+
+
+# Process to add new user keys to server
+ssh root@207.210.201.229
+nano .ssh/authorized_keys
+
+paste in the contents of the public key. It will look something like ""ssh-dss AAAAB3NzaC1kc3MAAACBAILRGPg+qKRkxTbGbJH3ugSFZjTiTs1LqvxmWdG9SBFIfp64MKvpIuJPPMuzaRQTK9Y3YeMKf0i6oAkLle0OzUtcSblZbv4yLIpeqvd4c1eAvrBS+m4FPKQNvVgxNkRyUgYpm8tKVEjG4GOhMcDtuFAqieIgNzG2IN+eXLplm+ulAAAAFQCqwrQzqLYxS+re6DjR4Utph3IchQAAAIA9GQeP22WXDZFkpybeRRNfnkLUMa2J4U3v0rkw8m3vxS4SD/0IOWKVrJ7U5gCeb6FoQQIl7aDxF6rJYmtLfB0v18vm3scts2D5lxDcxgEBuZCxkcBIV6PgKOe7wnFcnRJxoSzT4Zf/S0m9PbuXa7oo9tgDimSmD6Z8VbPQmbkmbQAAAIAizXCHR+U1PomX1tIWaCKidVhvn/PoBKYT+Pz6+Sh39Buku49hH9IZkuIJnpTFIDDeAcUpbjTnmpKApfU6RUf3mssuJo3Mwsh/wIPpR96wXEIzvFsxf6eEAszw94K8UTafF+mixFQX6005M9cJGIKQOXgYLAaAJwoTZ7WjrsWbAA== eric@ekittell.com
+Exit - Control X to close
+Y to save
+Enter to save to the same file.
