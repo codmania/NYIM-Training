@@ -43,12 +43,12 @@ describe Payment do
     it "should offer card, gift and cheque to admin paying for joe" do
       payment = Factory.build :admin_payment_for_joe
       #["CreditCardPayment", "Gift", "Cheque", "Invoice"]
-      payment.payment_options.should == ["CreditCardPayment", "Gift", "Cheque", "Retake"]
+      payment.payment_options.should == ["CreditCardPayment", "Gift", "Cheque", "Retake", "Coursehorse"]
     end
 
     it "should offer card, gift and cheque, invoice to admin paying for joe who is invoicable" do
       payment = Factory.build :admin_payment_for_joe, :student => Factory.build(:joe_student, :invoiceable => true)
-      payment.payment_options.should == ["CreditCardPayment", "Gift", "Cheque", "Invoice", "Retake"]
+      payment.payment_options.should == ["CreditCardPayment", "Gift", "Cheque", "Invoice", "Retake", "Coursehorse"]
     end
 
     it "should offer invoice for joe if inviocable" do

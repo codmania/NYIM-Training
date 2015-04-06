@@ -9,4 +9,9 @@ module ControllerSpecHelper
     response.should be_success
     response.should render_template template if template
   end
+
+  def check_redirect(template = nil)
+    response.should be_redirect
+    response.should render_template template if template
+  end
 end

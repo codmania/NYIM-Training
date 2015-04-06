@@ -1,7 +1,5 @@
 class NyimJobs::Base #< Struct.new(*ATTRS)
-
-  #class_inheritable_accessor :description
-  class_attribute :description#, :instance_reader => false, :instance_writer => false
+  class_attribute :description
 
   ATTRS = [:options, :user, :tag, :job_class, :priority, :completion_target, :run_at, :interval]
 
@@ -36,8 +34,6 @@ class NyimJobs::Base #< Struct.new(*ATTRS)
   self.register = [:description, :user, :tag, :priority, :completion_target, :run_at]
   self.fatal_exceptions = []
 
-  #self.description = ""
-
   def in_batches(scope,size=1000,&block)
     steps = scope.count/size
     (0..steps).each do |step|
@@ -50,8 +46,6 @@ class NyimJobs::Base #< Struct.new(*ATTRS)
     self.options = init.reverse_merge(options || {})
     self.tag ||= self.class.name.underscore.split('/')[1].humanize
     self.job_class ||= 'Job'
-    #self.description = "hi"#self.class.description
-    #self.interval ||= 60
   end
 
   def launch(time = nil)
@@ -62,11 +56,4 @@ class NyimJobs::Base #< Struct.new(*ATTRS)
     Airbrake.notify(exc)
     super(job,exc)
   end
-
-  # this hook implements a cron-like function
-  #def success
-  # super
-  #  launch(:run_at => interval.minutes.since(run_at || Time.now) if interval
-  #end
-
 end

@@ -8,17 +8,19 @@ source 'http://rubygems.org'
 #gem 'mysql2', :git => 'https://github.com/brianmario/mysql2/', :branch => '0.2.x'
 # funnily the mysql adapter needs this?
 gem 'rails', '3.1.10'
-gem 'mysql2'
+gem 'mysql2', '>=0.3.12'
 gem 'rake', '>=0.9.2'
 
 group :development do
   gem 'capistrano' # Deploy with Capistrano
-  gem 'rvm-capistrano'
+  gem 'rvm-capistrano', :require => false
   # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
   # gem 'ruby-debug'
   #gem 'ruby-debug19'
   gem 'debugger'
-  gem 'pry'
+  gem 'jazz_hands'
+  gem 'letter_opener'
+
   # use vagrant
   #gem 'erubis', "~> 2.7.0"
   #gem 'vagrant', ">=0.8.0"
@@ -65,7 +67,7 @@ gem "has_addresses"
 gem 'remotipart', "~> 1.0"#, :git => 'git://github.com/formasfunction/remotipart'
 gem 'paperclip'
 
-gem 'delayed_job', '2.1.4'
+gem 'delayed_job'
 
 gem 'state_machine', :git => 'git://github.com/pluginaweek/state_machine.git'
 
@@ -76,4 +78,4 @@ gem 'date_validator', :git => 'git://github.com/codegram/date_validator.git'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 
-gem 'friendly_id', "~> 4.0.0.beta14"
+gem 'friendly_id', "~> 4.0.0"
