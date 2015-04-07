@@ -19,3 +19,4 @@ pickle-email-*.html
 .project
 doc/local
 shared/uploads/*
+.DS_Store
