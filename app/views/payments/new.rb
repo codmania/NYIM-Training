@@ -42,11 +42,18 @@ class Views::Payments::New < Application::Widgets::New
             end
             text ' or any time by clicking Policies in the main menu.'
           end
-          form.input :terms_and_conditions,
-                     :as    => :boolean,
-                     :label => 'I have read and accept the terms and conditions'
+          if admin?
+            form.input :terms_and_conditions,
+                       :as    => :boolean,
+                       :input_html => { :checked => 'checked' },
+                       :label => 'I have read and accept the terms and conditions'
+          else
+            form.input :terms_and_conditions,
+                       :as    => :boolean,
+                       :label => 'I have read and accept the terms and conditions'
+          end
           record.type = 'CreditCardPayment' if record.type.blank? &&
-              record.payment_options.include?('CreditCardPayment')
+            record.payment_options.include?('CreditCardPayment')
           display_card_options = record.type == 'CreditCardPayment'
 
           if record.payment_options.length > 1
@@ -67,10 +74,10 @@ class Views::Payments::New < Application::Widgets::New
         card_id = record.card_id
         div :id => 'card_input' do
           record.build_card(
-              :mandatory  => display_card_options && card_id.blank? || nil,
-              :address    => Address.new(:mandatory => true),
-              :first_name => record.payer.first_name,
-              :last_name  => record.payer.last_name
+            :mandatory  => display_card_options && card_id.blank? || nil,
+            :address    => Address.new(:mandatory => true),
+            :first_name => record.payer.first_name,
+            :last_name  => record.payer.last_name
           ) unless record.card && record.card.new_record? || !record.can_have_card?
 
           form.inputs do
@@ -113,7 +120,7 @@ class Views::Payments::New < Application::Widgets::New
                                                       'data-select-show'   => '#address_fields',
                                                       'data-select-write'  => "\##{record.class.name.underscore}_card_attributes_address_attributes_mandatory" } unless record.credit_cards.empty?
                   card_form.object.address =
-                      Address.new(:mandatory => !card_form.object.address_id || nil) unless card_form.object.address && card_form.object.address.new_record?
+                    Address.new(:mandatory => !card_form.object.address_id || nil) unless card_form.object.address && card_form.object.address.new_record?
                   card_form.semantic_fields_for :address do |address_form|
                     #errors(address_form.object)
 
