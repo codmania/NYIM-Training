@@ -1,6 +1,3 @@
-Install "Homebrew" a package manager for OSX:
-  > ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
 Check if mysql is installed on your system:
   > mysql --version
 
@@ -17,6 +14,12 @@ Check out NYIM github repository to your local drive:
 Go inside that folder and install add dependencies:
   > cd nyim
   > bundle install
+
+If there will be any errors with installing mysql2 gem, you will need to install it manually:
+  > gem install mysql2 --with-mysql-dir=/PATH/TO/MARIADB/
+
+You need to provide proper path for mariadb, in my case it's (/usr/local/Cellar/mariadb/10.0.17). But you can find it out, by running:
+  > brew info mariadb
 
 After all gems are installed, you can easile setup database (create users and database itself) by running:
   > rake db:setup
@@ -57,10 +60,10 @@ FROM (SELECT signups.*, payments.type as payments_type
       courses c, scheduled_courses sc, users u, companies comp, users teacher, course_groups cg
 
 WHERE s.course_id = c.id
-      AND s.scheduled_course_id = sc.id
-      AND s.student_id = u.id
-      AND u.company_id = comp.id
-      AND sc.teacher_id = teacher.id
-      AND c.course_group_id = cg.id
-      AND s.created_at > DATE('2015-04-14')
-      AND s.created_at < DATE('2015-04-15');
+  AND s.scheduled_course_id = sc.id
+  AND s.student_id = u.id
+  AND u.company_id = comp.id
+  AND sc.teacher_id = teacher.id
+  AND c.course_group_id = cg.id
+  AND s.created_at > DATE('2015-04-14')
+  AND s.created_at < DATE('2015-04-15');
