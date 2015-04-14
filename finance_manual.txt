@@ -26,6 +26,9 @@ After all gems are installed, you can easile setup database (create users and da
 
 Now you need to login to server and download latest backup. Latest one i found so fat is called 'nyim3_production.2013-07-05.sql'. I've used Transmit app to download it, you might use something else.
 
+This is found on the server at:
+  public_html/training-nyc.com/shared/backup
+
 Assuming you put the backup file to 'bckp/' directory of nyim project. To apply it to your current database you need to run:
   > mysql -uroot -p[root_password] nyim3_production < bckp/nyim3_production.2013-07-05.sql
 
