@@ -30,3 +30,20 @@ Assuming you put the backup file to 'bckp/' directory of nyim project. To apply 
   > mysql -uroot -p[root_password] nyim3_production < bckp/nyim3_production.2013-07-05.sql
 
 Now you have a back-up database running on your local machine which you can use to run queries on.
+
+
+You need to connect to 'nyim3_production' database and this is query you could run (modify DATE range as needed):
+
+SELECT
+  s.transaction_code, s.price as signup_price, s.status, s.confirmed_at, s.os, s.purchase_type, s.certificate_mailed_on, s.created_at,
+                      cg.name as group_name, cg.short_name as group_short_name,
+                      u.email as teacher_email, u.first_name as teacher_fn, u.last_name as teacher_ln,
+                      c.name as company_name
+FROM signups s,
+  course_groups cg,
+  users u,
+  scheduled_courses sc,
+  companies c
+WHERE s.student_id = u.id
+AND s.created_at > DATE('2012-08-01')
+AND s.created_at < DATE('2012-09-01');
