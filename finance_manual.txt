@@ -1,0 +1,32 @@
+Install "Homebrew" a package manager for OSX:
+  > ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+After brew was installed, update all packages and install a MariaDB:
+  > brew update
+  > brew install mariadb
+
+MariaDb is a drop in replacement for MySQL. But has more sane defaults and is much more performant. Run mariadb:
+  > mysql.server start
+
+Check out NYIM github repository to your local drive:
+  > git clone git@github.com:3rdI/nyim.git
+
+Go inside that folder and install add dependencies:
+  > cd nyim
+  > bundle install
+
+If there will be any errors with installing mysql2 gem, you will need to install it manually:
+  > gem install mysql2 --with-mysql-dir=/PATH/TO/MARIADB/
+
+You need to provide proper path for mariadb, in my case it's (/usr/local/Cellar/mariadb/10.0.17). But you can find it out, by running:
+  > brew info mariadb
+
+After all gems are installed, you can easile setup database (create users and database itself) by running:
+  > rake db:setup
+
+Now you need to login to server and download latest backup. Latest one i found so fat is called 'nyim3_production.2013-07-05.sql'. I've used Transmit app to download it, you might use something else.
+
+Assuming you put the backup file to 'bckp/' directory of nyim project. To apply it to your current database you need to run:
+  > mysql -uroot -p[root_password] nyim3_production < bckp/nyim3_production.2013-07-05.sql
+
+Now you have a back-up database running on your local machine which you can use to run queries on.
