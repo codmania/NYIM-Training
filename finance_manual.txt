@@ -29,8 +29,6 @@ Now you need to login to server and download latest backup. Latest one i found s
 This is found on the server at:
   public_html/training-nyc.com/shared/backup
 
-
-
 Assuming you put the backup file to 'bckp/' directory of nyim project.
   > mysql -uroot nyim3_development < bckp/nyim3_production.2013-07-05.sql
 
