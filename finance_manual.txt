@@ -37,7 +37,7 @@ Now you have a back-up database running on your local machine which you can use 
 
 Backing up:
 ssh root@207.210.201.229
-mysqldump -uroot nyim3_production > "/root/nyim/shared/backup/dumpfile_$now.sql"
+mysqldump -uroot nyim3_production > "/root/nyim/shared/backup/dumpfile_$(date +"%m_%d_%Y").sql"
 
 You need to connect to 'nyim3_production' database and this is query you could run (modify DATE range as needed):
 
