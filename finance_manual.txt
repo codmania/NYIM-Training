@@ -39,7 +39,7 @@ Backing up:
 ssh root@207.210.201.229
 mysqldump -uroot nyim3_production > "/root/nyim/shared/backup/dumpfile_$now.sql"
 
-You need to connect to '5nyim3_production' database and this is query you could run (modify DATE range as needed):
+You need to connect to 'nyim3_production' database and this is query you could run (modify DATE range as needed):
 
 SELECT
   s.transaction_code, s.price as signup_price, s.status, s.confirmed_at, s.os, s.purchase_type, s.certificate_mailed_on, s.created_at,
