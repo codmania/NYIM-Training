@@ -1,6 +1,9 @@
 Check if mysql is installed on your system:
   > mysql --version
 
+Check if mysql is installed on your system:
+  > mysql --version
+
 If it returns something, then you have mysql installed. If not you need to install it:
   > brew update
   > brew install mariadb
@@ -14,12 +17,6 @@ Check out NYIM github repository to your local drive:
 Go inside that folder and install add dependencies:
   > cd nyim
   > bundle install
-
-If there will be any errors with installing mysql2 gem, you will need to install it manually:
-  > gem install mysql2 --with-mysql-dir=/PATH/TO/MARIADB/
-
-You need to provide proper path for mariadb, in my case it's (/usr/local/Cellar/mariadb/10.0.17). But you can find it out, by running:
-  > brew info mariadb
 
 After all gems are installed, you can easile setup database (create users and database itself) by running:
   > rake db:setup
