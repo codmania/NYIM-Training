@@ -41,16 +41,21 @@ mysqldump -uroot nyim3_production > "/root/nyim/shared/backup/dumpfile_$(date +"
 
 You need to connect to 'nyim3_production' database and this is query you could run (modify DATE range as needed):
 
-SELECT
-  s.transaction_code, s.price as signup_price, s.status, s.confirmed_at, s.os, s.purchase_type, s.certificate_mailed_on, s.created_at,
-                      cg.name as group_name, cg.short_name as group_short_name,
-                      u.email as teacher_email, u.first_name as teacher_fn, u.last_name as teacher_ln,
-                      c.name as company_name
+select s.transaction_code, s.status,
+  c.name as course_name,
+  cg.name as group_name, cg.short_name as group_short_name,
+  teacher.first_name as teacher_fn, teacher.last_name as teacher_ln,
+  u.email as student_email, u.first_name as student_fn, u.last_name as student_ln,
+  comp.name as student_company,
+  sc.starts_at, sc.ends_at,
+  s.os, s.created_at, s.updated_at, s.price
 FROM signups s,
-  course_groups cg,
-  users u,
-  scheduled_courses sc,
-  companies c
-WHERE s.student_id = u.id
-AND s.created_at > DATE('2012-08-01')
-AND s.created_at < DATE('2012-09-01');
+  courses c, scheduled_courses sc, users u, companies comp, users teacher, course_groups cg
+WHERE s.course_id = c.id
+  AND s.scheduled_course_id = sc.id
+  AND s.student_id = u.id
+  AND u.company_id = comp.id
+  AND sc.teacher_id = teacher.id
+  AND c.course_group_id = cg.id
+  AND s.created_at > DATE('2015-04-14')
+  AND s.created_at < DATE('2015-04-15');
