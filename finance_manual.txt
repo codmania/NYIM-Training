@@ -50,14 +50,17 @@ select s.transaction_code, s.status,
   u.email as student_email, u.first_name as student_fn, u.last_name as student_ln,
   comp.name as student_company,
   sc.starts_at, sc.ends_at,
-  s.os, s.created_at, s.updated_at, s.price
-FROM signups s,
-  courses c, scheduled_courses sc, users u, companies comp, users teacher, course_groups cg
+  s.os, s.created_at, s.updated_at, s.price, s.payments_type
+
+FROM (SELECT signups.*, payments.type as payments_type
+      FROM signups LEFT JOIN payments ON signups.payment_id = payments.id) s,
+      courses c, scheduled_courses sc, users u, companies comp, users teacher, course_groups cg
+
 WHERE s.course_id = c.id
-  AND s.scheduled_course_id = sc.id
-  AND s.student_id = u.id
-  AND u.company_id = comp.id
-  AND sc.teacher_id = teacher.id
-  AND c.course_group_id = cg.id
-  AND s.created_at > DATE('2015-04-14')
-  AND s.created_at < DATE('2015-04-15');
+      AND s.scheduled_course_id = sc.id
+      AND s.student_id = u.id
+      AND u.company_id = comp.id
+      AND sc.teacher_id = teacher.id
+      AND c.course_group_id = cg.id
+      AND s.created_at > DATE('2015-04-14')
+      AND s.created_at < DATE('2015-04-15');
