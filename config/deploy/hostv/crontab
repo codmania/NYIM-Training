@@ -11,3 +11,4 @@ LAUNCH_CMD=curl -k -X
 14 04 * * * $LAUNCH_CMD POST -d 'task=send_course_reminders' $JOB_LAUNCH_URL >> $JOBS_LOG
 44 03 * * * $LAUNCH_CMD POST -d 'task=send_trainer_class_reminders' $JOB_LAUNCH_URL >> $JOBS_LOG
 24 * * * * $LAUNCH_CMD POST -d 'task=send_feedback_reminders' $JOB_LAUNCH_URL >> $JOBS_LOG
+24 * * * * $LAUNCH_CMD POST -d 'task=send_certificates' $JOB_LAUNCH_URL >> $JOBS_LOG
