@@ -19,7 +19,6 @@ group :development do
   #gem 'ruby-debug19'
   gem 'debugger'
   gem 'jazz_hands'
-  gem 'letter_opener'
 
   # use vagrant
   #gem 'erubis', "~> 2.7.0"
