@@ -25,9 +25,12 @@ default_run_options[:pty] = true
 set :application, "nyim"
 
 # repo details
+set :user, 'training'
 set :deploy_via, :remote_cache
 set :scm, :git
 set :repository, "git@github.com:3rdI/nyim.git"
+#cap -S branch=develop deploy
+set :branch, fetch(:branch, 'master')
 
 #https://github.com/capistrano/capistrano/issues/79
 set :normalize_asset_timestamps, false
