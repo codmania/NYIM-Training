@@ -6,7 +6,9 @@ JOB_LAUNCH_URL=https://training-nyc.com/jobs/launch.txt
 LAUNCH_CMD=curl -k -X
 #http://stackoverflow.com/questions/285717/a-cron-job-for-rails-best-practices
 # instead of runner, use local call
+# curl -k -X POST -d 'task=send_feedback_reminders' localhost:3000/jobs/launch.txt
 14 03 * * * $LAUNCH_CMD POST -d 'task=purge_stale_signups' $JOB_LAUNCH_URL >> $JOBS_LOG
 14 04 * * * $LAUNCH_CMD POST -d 'task=send_course_reminders' $JOB_LAUNCH_URL >> $JOBS_LOG
 44 03 * * * $LAUNCH_CMD POST -d 'task=send_trainer_class_reminders' $JOB_LAUNCH_URL >> $JOBS_LOG
 24 * * * * $LAUNCH_CMD POST -d 'task=send_feedback_reminders' $JOB_LAUNCH_URL >> $JOBS_LOG
+24 * * * * $LAUNCH_CMD POST -d 'task=send_certificates' $JOB_LAUNCH_URL >> $JOBS_LOG

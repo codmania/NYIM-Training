@@ -1,4 +1,4 @@
-class NyimJobs::Base #< Struct.new(*ATTRS)
+class NyimJobs::Base
   class_attribute :description
 
   ATTRS = [:options, :user, :tag, :job_class, :priority, :completion_target, :run_at, :interval]
@@ -7,7 +7,12 @@ class NyimJobs::Base #< Struct.new(*ATTRS)
 
   include Process::Hooks
 
-  TASKS = [:purge_stale_signups, :send_course_reminders, :send_feedback_reminders, :delayed_user_mailer, :send_trainer_class_reminders]
+  TASKS = [:purge_stale_signups,
+           :send_course_reminders,
+           :send_feedback_reminders,
+           :delayed_user_mailer,
+           :send_trainer_class_reminders,
+           :send_certificates ]
   TASKS_CLASSES = {}
   TASKS.each { |task| TASKS_CLASSES[task] = "NyimJobs::#{task.to_s.camelize}" }
 
