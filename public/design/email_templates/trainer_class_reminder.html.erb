@@ -8,7 +8,7 @@
     <% course.attendants.each do |student| %>
       <li><%= student.full_name %>
         <%= student.email %>
-        <%= phone = student.phone_number; phone ? r.phone.to_s : 'no phone' %>
+        <%= phone = student.phone_number ? student.phone_number.to_s : 'no phone' %>
       </li>
     <% end %>
   </ol>
