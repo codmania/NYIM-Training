@@ -310,6 +310,7 @@ DEPENDENCIES
   airbrake
   cancan
   capistrano
+  daemons
   date_validator!
   debugger
   delayed_job

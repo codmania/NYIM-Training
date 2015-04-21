@@ -68,6 +68,7 @@ gem 'remotipart', "~> 1.0"#, :git => 'git://github.com/formasfunction/remotipart
 gem 'paperclip'
 
 gem 'delayed_job'
+gem 'daemons' # this is used by delayed_job to daemonize the process
 
 gem 'state_machine', :git => 'git://github.com/pluginaweek/state_machine.git'
 
