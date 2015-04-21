@@ -17,5 +17,5 @@ def process_is_dead?
 end
 
 if !File.exist?(DELAYED_JOB_PID_PATH) && process_is_dead?
-  start_delayed_job
+  start_delayed_job unless Rails.env.development?
 end
