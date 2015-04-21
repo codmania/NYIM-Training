@@ -25,7 +25,6 @@ default_run_options[:pty] = true
 set :application, "nyim"
 
 # repo details
-set :user, 'training'
 set :deploy_via, :remote_cache
 set :scm, :git
 set :repository, "git@github.com:3rdI/nyim.git"
