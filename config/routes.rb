@@ -175,6 +175,10 @@ Nyim::Application.routes.draw do
     end
   end
 
+  resource :uploads do
+    post :create
+  end
+
   root :to => "assets#asset", :asset => 'main'
 
 end
