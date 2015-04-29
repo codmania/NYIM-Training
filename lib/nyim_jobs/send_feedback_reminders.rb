@@ -1,6 +1,6 @@
 class NyimJobs::SendFeedbackReminders < NyimJobs::Base
 
-  self.description =  "sending feedback reminders"
+  self.description =  "course ends reminders"
   def perform
     if Site.site(:notify_when_course_ends)
       Signup.confirmed.attendance.inthelasthour.reject(&:blank?).each do |signup|
