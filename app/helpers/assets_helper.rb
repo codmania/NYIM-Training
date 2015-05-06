@@ -32,8 +32,9 @@ module AssetsHelper
     formtastic_button(form)
     w.rawtext "<script type=\"text/javascript\"> if('#asset_content'){
                 CKEDITOR.replace('asset_content', {
-                  filebrowserImageUploadUrl: '/uploads'}
-                );
+                  filebrowserImageUploadUrl: '/uploads',
+                  entities: false,
+                  basicEntities: false});
                 $('.asset_view_box label.label').remove();
               } </script>"
   end
