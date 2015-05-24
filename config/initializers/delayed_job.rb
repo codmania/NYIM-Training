@@ -2,7 +2,7 @@ DELAYED_JOB_PID_PATH = "#{Rails.root}/tmp/pids/delayed_job.pid"
 
 def start_delayed_job
   Thread.new do
-    'RAILS_ENV=production script/delayed_job run'
+    exec '/etc/init/delayed_job.conf ln -s /lib/init/upstart-job /etc/init.d/delayed_job'
   end
 end
 
