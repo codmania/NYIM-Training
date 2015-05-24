@@ -34,7 +34,8 @@ module AssetsHelper
                 CKEDITOR.replace('asset_content', {
                   filebrowserImageUploadUrl: '/uploads',
                   entities: false,
-                  basicEntities: false});
+                  basicEntities: false,
+                  allowedContent: true});
                 $('.asset_view_box label.label').remove();
               } </script>"
   end
