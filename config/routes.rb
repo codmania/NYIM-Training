@@ -133,7 +133,6 @@ Nyim::Application.routes.draw do
     member do
       get :reschedule
       get :feedback
-      get :certificate
       get :disclose_certificate
       get :cancel
       put :cancel_update
