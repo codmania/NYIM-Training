@@ -101,11 +101,7 @@ class Mailers::UserMailer < ActionMailer::Base
 
   end
 
-  MAILS.each do |type|
-    define_method(type) do |options, assigns|
-      asset(type, options, assigns)
-    end
-  end
+
 
   def self.subject(name, assigns)
     case name.to_sym
