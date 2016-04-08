@@ -92,26 +92,7 @@ class ApplicationController < ActionController::Base
 
   # generic error for authentication failures
   #include Application::AccessControl::Rescue
-  rescue_from CanCan::AccessDenied do |exception|
-    action_name       = case exception.action
-                          when :new, :create then
-                            'create new'
-                          when :edit, :update then
-                            'modify'
-                          else
-                            exception.action.to_s.humanize.downcase
-                        end
-    text              = "You are not authorized to #{action_name}"
-    text              += exception.subject.instance_eval do
-      case self
-        when Class, Symbol, String then
-          " #{to_s.humanize.downcase.pluralize}"
-        when ActiveRecord::Base then
-          " #{self.class.name.humanize.downcase}"
-        else
-          to_s rescue ''
-      end
-    end
+
     current_user_info = current_user ?
         " when logged in as #{current_user.full_name_with_email}" :
         " with missing or wrong credentials"
