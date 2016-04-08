@@ -108,6 +108,14 @@ module UsersHelper
     formtastic_button(form)
   end
 
-
+  def login_status(user)
+    if user.current_sign_in_at
+      "online since #{user.current_sign_in_at.to_s(:short)} (#{user.current_sign_in_ip})"
+    elsif user.last_sign_in_at
+      "last login at #{user.last_sign_in_at.to_s(:short)} (#{user.last_sign_in_ip})"
+    else
+      "never logged in"
+    end
+  end
 
 end
