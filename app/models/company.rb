@@ -12,6 +12,8 @@ class Company < ActiveRecord::Base
     where(:display_as_client.eq => true).order_clients
   end)
     
+  has_many :students
+  
   has_many :representatives, :class_name => 'Student', 
   :conditions => { :parent_id => nil }
     
