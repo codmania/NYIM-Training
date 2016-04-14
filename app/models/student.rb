@@ -108,7 +108,9 @@ class Student < User
     @returning_customer ||= submissions.where(:status.not_in => ['waiting']).count > 1
   end
 
-
+  def shopping_cart(student_id=id)
+    Signup.shopping_cart(student_id)
+  end
 
 #validates_existence_of :company
 #error_names :addresses_addressable_id => false, :phone_numbers_phoneable_id => false, :addressable_type => false, :phone_numbers_phoneable_type => false
