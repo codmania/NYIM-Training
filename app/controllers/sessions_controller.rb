@@ -17,13 +17,7 @@ class SessionsController < Devise::SessionsController
 
   resourceful_actions :new, :create, :destroy
 
-  def refresh_header_and_sidebar(page)
-    page.replace 'header', render_to_string(:widget => Views::Site::NyimHeader)
-    page.replace 'sidebar', render_to_string(:widget => Views::Site::UserPanel)
-    if current_user.is_a?(Teacher)
-      page.replace_html main_container_dom, render_to_string(:widget => Views::Teachers::Show.new(:resource => current_user))
-    end
-  end
+
 
   js :new do |page|
     page.show 'loginbox'
