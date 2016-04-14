@@ -205,10 +205,5 @@ class Payment < ActiveRecord::Base
 
   after_create :send_invoice
 
-  def send_invoice
-    if success? && site(:notify_invoice)
-      NyimJobs::DelayedUserMailer.invoice({}, {:payment => payment, :user => payment.submitter})
-    end
-  end
 
 end
