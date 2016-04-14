@@ -6,9 +6,6 @@ class CourseGroupsController < ApplicationController
     scope.order('pos ASC', 'name ASC')
   end
 
-  collection_scope :index do |scope|
-    scope.active.order('pos ASC', 'name ASC')
-  end
 
   js :update, :create, :destroy do |page|
     course_menu = render_to_string :widget => Views::Site::CourseMenu
