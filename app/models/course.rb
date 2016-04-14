@@ -85,6 +85,18 @@ class Course < ActiveRecord::Base
     promotion_expires_at && promotion_expires_at > Time.now
   end
 
+  def sale_price
+    if promotional?
+      if promotional_price
+        promotional_price
+      else
+        price * (1.0 - promotional_discount.to_f/100.0)
+      end
+    else
+      price
+    end
+  end
+
   def to_menu
     short_name || name.truncate(10)
   end
