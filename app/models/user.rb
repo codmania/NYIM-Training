@@ -24,11 +24,6 @@ class User < ActiveRecord::Base
   validates :role, :inclusion => ROLES.map { |x| x.to_s.classify }
   # to correct dependency bug with single table inheritance
   #http://stackoverflow.com/questions/4138957/activerecordsubclassnotfound-error-when-using-sti-in-rails
-  if Rails.env.development?
-    ROLES.map(&:to_s).each do |r|
-      require_dependency r
-    end
-  end
 
   ROLE_TESTS = ROLES.map { |r| "#{r}?".to_sym }
 
