@@ -43,6 +43,14 @@ class JobsController < ApplicationController
     end
   end
 
-
+  action_component :launch do
+    task    = params[:task]
+    force   = params[:force] == '1'
+    msg     = "[JOBS][CONTROLLER][#{Time.now}] '#{task}' "
+    success = NyimJobs::Base.launch(task, force, :user => current_user)
+    msg << (success ? "scheduled" : "unknown")
+    @result = msg
+    logger.info msg
+  end
 
 end
