@@ -24,6 +24,10 @@ class ScheduledCoursesController < ApplicationController
     page.replace_html dom_id(resource, :seats), :text => resource.show_seats_available if success
   end
 
+  def index_to_json(items)
+    items.map(&:to_calendar)
+  end
+
   js :select, :only => true do |page|
     if resource then
       page.replace_html 'signup_os', view_context.os_dropdown(resource)
