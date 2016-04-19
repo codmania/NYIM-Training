@@ -22,3 +22,4 @@ pickle-email-*.html
 doc/local
 shared/uploads/*
 .DS_Store
+backupdb/*
