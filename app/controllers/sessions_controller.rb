@@ -50,6 +50,9 @@ class SessionsController < Devise::SessionsController
     clean_up_passwords build_resource
   end
 
+  fallback_action :create => [nil, nil, proc { root_path }],
+    :destroy => [nil, nil, proc { root_path }]
+
   def devise_sign_out
     if Devise.sign_out_all_scopes
       sign_out
