@@ -20,16 +20,6 @@ class PaymentsController < ApplicationController
 
   fallback_action :create => [nil, nil, proc { payment_url(resource) }]
 
-  action_component :create do
-
-    logger.info "in action: transaction code = #{cookies['shopping_cart'].inspect}"
-    if self.success = resource.save
-      test    = !Rails.env.production? && !params[:test].blank?
-      success = !params[:success].blank?
-      self.success = resource.charge(test, success)
-    end
-  end
-
   display_options :submitter, :amount, :created_at, :type, :success, :refund, :ip, :order_id, :failed_with,
                   :only => [:list]
 
