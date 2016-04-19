@@ -103,30 +103,4 @@ class SignupsController < ApplicationController
     end
   end
 
-  def checkout
-    student_id = get_student.ifnil?(&:id)
-    @payment = Payment.new(:amount => Money.new(0),
-                           :student_id => student_id,
-                           :submitter => current_user,
-                           :store => cookies
-    )
-
-    transaction_code = @payment.order_id
-    cookies['shopping_cart'] = {:expires => site(:payment_timeout_interval).seconds.from_now,
-                                :value => transaction_code}
-    logger.info "transaction code cookie set to #{cookies['shopping_cart'].inspect}"
-
-    Signup.transaction do
-      resource do |c|
-        c.check_out
-        c.transaction_code = transaction_code
-        @payment.amount += c.price!
-        c.save!
-      end
-    end
-
-    NyimJobs::ExpireShoppingCart.new(:ids => resource.map(&:id), :transaction_code => transaction_code).
-        launch(site(:payment_timeout_interval).seconds.from_now)
-  end
-
 end
