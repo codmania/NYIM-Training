@@ -32,6 +32,8 @@ class Course < ActiveRecord::Base
   has_many :feedbacks, :through => :scheduled_courses
   has_many :testimonials
 
+  has_many :teachers, :through => :scheduled_courses
+
   composed_of :price, :class_name => 'Money',
               :mapping            => [%w(price cents)],
               :allow_nil          => true,
