@@ -74,10 +74,6 @@ class Course < ActiveRecord::Base
     end
   end
 
-  def promotional?
-    promotion_expires_at && promotion_expires_at > Time.now
-  end
-
   def sale_price
     if promotional?
       if promotional_price
