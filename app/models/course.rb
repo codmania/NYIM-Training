@@ -59,10 +59,6 @@ class Course < ActiveRecord::Base
   # blank out promotion expiration unless promotional is set to a promotion
   before_validation :set_promotion_expires_at, :set_os, :set_short_name
 
-  def set_os
-    self.os = nil if os.blank?
-  end
-
   def set_short_name
     self.short_name = name if short_name.blank?
   end
