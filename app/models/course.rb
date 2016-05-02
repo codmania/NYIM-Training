@@ -1,5 +1,6 @@
 require 'date_validator'
 
+
 class Course < ActiveRecord::Base
 
   extend FriendlyId
@@ -90,6 +91,14 @@ class Course < ActiveRecord::Base
     else
       price
     end
+  end
+
+  def to_menu
+    short_name || name.truncate(10)
+  end
+
+  def to_dropdown
+    "#{name} (#{upcoming_scheduled_courses_count})"
   end
 
   has_asset :resources, :outline, :description, :keywords
