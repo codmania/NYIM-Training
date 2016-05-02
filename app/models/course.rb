@@ -68,6 +68,12 @@ class Course < ActiveRecord::Base
     (promotional_discount || promotional_price || 0) > 0
   end
 
+  def set_promotion_expires_at
+    unless promotional_price_set?
+      self.promotion_expires_at = nil
+    end
+  end
+
   def sale_price
     if promotional?
       if promotional_price
